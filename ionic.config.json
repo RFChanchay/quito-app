@@ -1,0 +1,7 @@
+{
+  "name": "quito-rural",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="/parroquias"></ion-back-button>
+    <ion-title>Parroquia</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Parroquia</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="map"></div>
+  <div class="parroquia-info">
+    <h2>Acerca de ...</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad dolores ullam atque, quaerat quasi aliquam, tenetur tempora 
+      non temporibus voluptatem, optio dolorum error quo ea excepturi inventore blanditiis amet. Suscipit!</p>
+  </div>
+
+  <div class="parroquia-datos">
+    <h2>Información de la Parroquia</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="home"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Población</h3>
+          <p>50.000 habitantes</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="map"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Altitud</h3>
+          <p>2.800 m.s.n.m.</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="partly-sunny"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Clima</h3>
+          <p>Templado</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="briefcase"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Economía</h3>
+          <p>Agricultura y turismo</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="book"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Historia</h3>
+          <p>La parroquia fue fundada en 1850...</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="camera"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Atractivos turísticos</h3>
+          <p>La iglesia principal, la plaza central...</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="party"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Festividades</h3>
+          <p>La fiesta patronal se celebra en octubre...</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="restaurant"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Gastronomía</h3>
+          <p>El plato típico es el hornado...</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          <ion-icon name="medical"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <h3>Servicios</h3>
+          <p>La parroquia cuenta con un hospital, una escuela...</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="parroquia-galeria">
+    <h2>Galería de Fotos</h2>
+    <ion-slides>
+      <ion-slide>
+        <img src="https://www.minayon.com/portal/media/pictures/web/acerca_nayon/valle.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://inmoamigo.com/wp-content/uploads/2021/03/Nayon.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://ec.viajandox.com/uploads/attractive_2078.jpg">
+      </ion-slide>
+      <!-- Agrega tantos 'ion-slide' como imágenes desees mostrar en la galería -->
+    </ion-slides>
+  </div>
+</ion-content>

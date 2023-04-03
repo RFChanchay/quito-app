@@ -1,20 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
+import { Youtube } from '../models/youtube.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class YotubeService {
-  apiKey=environment.youtubeKey ;
+  apiKey = environment.youtubeKey;
+  //playList:Observable
 
   constructor(public http: HttpClient) { }
-  getVideosForChanel(channel, maxResults): Observable<Object> {
-    let url = 'https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&channelId=' + channel + '&order=date&part=snippet &type=video,id&maxResults=' + maxResults
-    return this.http.get(url)
-      .pipe(map((res) => {
-        return res;
-      }))
+
+  /*getPlaylistsForChannel(channel) {
+    return this.http.get('https://www.googleapis.com/youtube/v3/playlists?key=' + this.apiKey + '&channelId=' + channel + '&part=snippet,id&maxResults=20')
+    .map((res) => {
+      return res.json()['items'];
+    })
+  }*/
+  getPlaylistsForChannel(channelId: string): Observable<Youtube> {
+    const url = `https://www.googleapis.com/youtube/v3/playlists?key=${this.apiKey}&channelId=${channelId}&part=snippet,id&maxResults=20`;
+    return this.http.get<Youtube>(url);
   }
+
+  getListVideos(listId): Observable<any>{
+    const url= 'https://www.googleapis.com/youtube/v3/playlistItems?key=' + this.apiKey + '&playlistId=' + listId +'&part=snippet,id&maxResults=20';
+    return this.http.get(url);
+  }
+  
+  getSpecificVideos(subject:string): Observable<any>{
+    const url=`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=date&q=${subject}&type=video&key=${this.apiKey}`;
+    return this.http.get<any>(url);
+  }
+
 }

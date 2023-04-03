@@ -10,6 +10,7 @@ import { NoticiasPage } from './noticias.page';
 import { HttpClientModule } from "@angular/common/http";
 
 
+
 @NgModule({
   imports: [
     CommonModule,

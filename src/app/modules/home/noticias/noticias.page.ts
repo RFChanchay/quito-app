@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AlertController, IonModal, ModalController, NavController } from '@ionic/angular';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Observable } from 'rxjs';
+
 import { Item } from 'src/app/models/item.model';
 import { Youtube } from 'src/app/models/youtube.model';
 //import { Subject, takeUntil } from 'rxjs';
@@ -15,7 +14,7 @@ import { YotubeService } from 'src/app/services/yotube.service';
   templateUrl: './noticias.page.html',
   styleUrls: ['./noticias.page.scss'],
 })
-export class NoticiasPage implements OnInit {
+export class NoticiasPage implements OnInit,OnDestroy {
   videos: Item[];
   channelId = 'UCmBA_wu8xGg1OfOkfW13Q0Q';
   playlist: Item[];
@@ -33,6 +32,20 @@ export class NoticiasPage implements OnInit {
     console.log('Ejecutando ngOnInit');
     this.searchVideos();
   }
+  
+  ngOnDestroy(){
+    console.log('Ejecutando destroy');
+  }
+  ionViewWillEnter(){
+    console.log("ionViewWillEnter")
+    for(let i = 0; i < 100; i++){
+      console.log(i);
+    }
+  }
+  ionViewDidEnter(){
+      console.log("ionViewDidEnter")
+  }
+  
 
   async searchPlaylists() {
     await this.ytProvider.getPlaylistsForChannel(this.channelId).subscribe((items: Youtube)=>{
@@ -63,7 +76,6 @@ export class NoticiasPage implements OnInit {
     this.isModalOpen=true;
     console.log(this.selectedVideo);
   }
-
 
 
   async showAlert(msg) {

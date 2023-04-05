@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AtractivosPage
+  },
+  {
+    path: 'atractivo/:id',
+    loadChildren: () => import('./atractivo/atractivo.module').then( m => m.AtractivoPageModule)
   }
 ];
 

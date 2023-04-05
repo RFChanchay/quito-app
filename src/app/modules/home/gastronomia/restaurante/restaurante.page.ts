@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
 import { environment } from 'src/environments/environment';
 declare var mapboxgl:any;
 @Component({
@@ -8,10 +10,24 @@ declare var mapboxgl:any;
 })
 export class RestaurantePage implements OnInit {
   map:any;
-  constructor() { }
+  infoRestaurante:any;
+  
+  constructor(
+    private route:ActivatedRoute,
+    private supabase:DatabaseService
+  ) { }
 
   ngOnInit() {
     this.loadMap();
+    this.loadRestaurant();
+
+  }
+  loadRestaurant() {
+    const id: any= this.route.snapshot.queryParams;
+    this.supabase.getRowById(id.name,'restaurante').then((data)=>{
+      this.infoRestaurante=data.data[0];
+      console.log(this.infoRestaurante);
+    });
   }
   loadMap() {
     mapboxgl.accessToken = environment.mapBoxKey;

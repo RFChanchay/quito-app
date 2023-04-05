@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-back-button defaultHref="/home/gatronomia" slot="start">Regresar</ion-back-button>
-    <ion-title>Restaurante</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>{{infoRestaurante.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,13 +11,13 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-toolbar>
-      <ion-title size="large">Restaurante</ion-title>
+      <ion-title size="medium">{{infoRestaurante.nombre}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-text>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Ipsam praesentium beatae, earum cumque nihil officiis, tenetur ad
-    voluptate blanditiis expedita voluptatibus! Accusantium possimus
-    maiores recusandae consectetur est eos nesciunt suscipit!</ion-text>
+  <div class="restaurant-text">
+    <ion-text>{{infoRestaurante.about}}</ion-text>  
+  </div>
+  
   <div id="map"></div>
 
   <div class="card">

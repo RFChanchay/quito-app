@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ParroquiasPage
   },
   {
-    path: 'parroquia',
+    path: 'parroquia/:id',
     loadChildren: () => import('./parroquia/parroquia.module').then( m => m.ParroquiaPageModule)
   }
 ];

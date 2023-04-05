@@ -1,22 +1,76 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-back-button slot="start" defaultHref="/parroquias"></ion-back-button>
-    <ion-title>Parroquia</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>{{infoParroquia.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
   
-
-<ion-content [fullscreen]="true">
+<ion-content *ngIf="loaded">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Parroquia</ion-title>
+      <ion-title size="large"><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="map"><ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text></div>
+  
+  <div class="parroquia-info">
+    <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+  </div>
+
+  <div class="parroquia-datos">
+    <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" class="align-icon">
+          
+        </ion-col>
+        <ion-col>
+          <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+      <ion-row>
+        <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="parroquia-galeria">
+    <ion-skeleton-text [animated]="true" style="width: 100%;height: 100%;"></ion-skeleton-text>
+  </div>
+  
+</ion-content>
+<ion-content *ngIf="!loaded" [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{infoParroquia.nombre}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <div id="map"></div>
+  
   <div class="parroquia-info">
     <h2>Acerca de ...</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad dolores ullam atque, quaerat quasi aliquam, tenetur tempora 
-      non temporibus voluptatem, optio dolorum error quo ea excepturi inventore blanditiis amet. Suscipit!</p>
+    <p>{{infoParroquia.about}}</p>
   </div>
 
   <div class="parroquia-datos">
@@ -24,11 +78,11 @@
     <ion-grid>
       <ion-row>
         <ion-col size="2" class="align-icon">
-          <ion-icon name="home"></ion-icon>
+          <ion-icon name="person"></ion-icon>
         </ion-col>
         <ion-col>
           <h3>Población</h3>
-          <p>50.000 habitantes</p>
+          <p>{{infoParroquia.poblacion}} Personas</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -37,7 +91,7 @@
         </ion-col>
         <ion-col>
           <h3>Altitud</h3>
-          <p>2.800 m.s.n.m.</p>
+          <p>{{infoParroquia.altitud}} m.s.n.m.</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -46,7 +100,7 @@
         </ion-col>
         <ion-col>
           <h3>Clima</h3>
-          <p>Templado</p>
+          <p>{{infoParroquia.clima}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -55,7 +109,7 @@
         </ion-col>
         <ion-col>
           <h3>Economía</h3>
-          <p>Agricultura y turismo</p>
+          <p>{{infoParroquia.economia}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -63,8 +117,8 @@
           <ion-icon name="book"></ion-icon>
         </ion-col>
         <ion-col>
-          <h3>Historia</h3>
-          <p>La parroquia fue fundada en 1850...</p>
+          <h3>Fundación</h3>
+          <p>{{infoParroquia.fundacion}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -73,16 +127,16 @@
         </ion-col>
         <ion-col>
           <h3>Atractivos turísticos</h3>
-          <p>La iglesia principal, la plaza central...</p>
+          <p>{{infoParroquia.atractivo}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="2" class="align-icon">
-          <ion-icon name="party"></ion-icon>
+          <ion-icon name="happy"></ion-icon>
         </ion-col>
         <ion-col>
           <h3>Festividades</h3>
-          <p>La fiesta patronal se celebra en octubre...</p>
+          <p>{{infoParroquia.festividades}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -91,7 +145,7 @@
         </ion-col>
         <ion-col>
           <h3>Gastronomía</h3>
-          <p>El plato típico es el hornado...</p>
+          <p>{{infoParroquia.gastronomia}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -100,7 +154,7 @@
         </ion-col>
         <ion-col>
           <h3>Servicios</h3>
-          <p>La parroquia cuenta con un hospital, una escuela...</p>
+          <p>{{infoParroquia.servicios}}</p>
         </ion-col>
       </ion-row>
     </ion-grid>

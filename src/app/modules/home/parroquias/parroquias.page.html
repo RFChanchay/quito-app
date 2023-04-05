@@ -10,28 +10,10 @@
     </ion-toolbar>
 </ion-header>
   
-  <ion-card >
+  <ion-card style='background-image: url("{{item.imgPrincipal}}");' *ngFor="let item of parroquias" (click)="getParroquia(item)">
     <ion-card-header>
-      <ion-card-title>Nayon</ion-card-title>
+      <ion-card-title>{{item.nombre}}</ion-card-title>
     </ion-card-header>
   </ion-card>
-  <ion-card >
-    <ion-card-header>
-      <ion-card-title>Nayon</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card >
-    <ion-card-header>
-      <ion-card-title>Nayon</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card >
-    <ion-card-header>
-      <ion-card-title>Nayon</ion-card-title>
-    </ion-card-header>
-  </ion-card><ion-card >
-    <ion-card-header>
-      <ion-card-title>Nayon</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+  
 </ion-content>

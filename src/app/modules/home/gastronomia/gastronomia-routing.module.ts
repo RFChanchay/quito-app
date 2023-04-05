@@ -9,7 +9,7 @@ const routes: Routes = [
     component: GastronomiaPage
   },
   {
-    path: 'restaurante',
+    path: 'restaurante/:id',
     loadChildren: () => import('./restaurante/restaurante.module').then( m => m.RestaurantePageModule)
   }
 ];

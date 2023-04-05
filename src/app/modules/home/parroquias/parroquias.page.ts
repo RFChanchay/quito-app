@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { take } from 'rxjs';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-parroquias',
@@ -9,31 +10,40 @@ import { take } from 'rxjs';
 })
 export class ParroquiasPage implements OnInit {
 
-  parroquias:
-  [
-    {nombre:'NAYON',id:'13222'},
-    {nombre:'Zambiza',id:'2343a'}
-  ];
+  
+  data:any[];
+  parroquias:any;
 
   constructor(
     private router:Router,
+    private supabase:DatabaseService
   ) { }
 
   ngOnInit() {
-    console.log(this.parroquias.length );
+    
+    this.getParroquias();
+  }
+  async getParroquias(){
+    this.supabase.getParroquias().then((data)=>{
+      console.log(data);
+      this.parroquias=data.data;
+      console.log(this.parroquias.data);
+    });
+  }
+  async getRows(){
+    this.supabase.getRows('parroquia').then((data)=>{
+      console.log(data);
+    });
   }
 
   getParroquia(item){
-    (item?.user).pipe(
-      take(1)
-    ).subscribe(user_data=>{
-      console.log('data: ',user_data);
-      const navData:NavigationExtras={
-        queryParams:{
-          name:user_data?.name
-        }
-      };
-      this.router.navigate(['/','home','parroquias','parroquia',item?.id],navData);
-    });
+    console.log(item);
+    const navData:NavigationExtras={
+      queryParams:{
+        name:item?.id
+      }
+    };
+    this.router.navigate(['/','home','parroquias','parroquia',item?.id],navData);
   }
+
 }

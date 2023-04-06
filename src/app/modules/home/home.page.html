@@ -1,25 +1,25 @@
-<ion-tabs>
+<ion-tabs #tabs (ionTabsDidChange)="onTabsDidChange()">
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="parroquias">
+    <ion-tab-button tab="parroquias" [style]="styleParroquias">
       <ion-icon name="map"></ion-icon>
       <ion-label>Parroquias</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="atractivos">
+    <ion-tab-button tab="atractivos" [style]="styleAtractivos">
       <ion-icon name="sunny"></ion-icon>
       <ion-label>Atractivos</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="gastronomia">
+    <ion-tab-button tab="gastronomia" [style]="styleGastronomia">
       <ion-icon name="fast-food-outline"></ion-icon>
       <ion-label>Gastronomía</ion-label>
     </ion-tab-button>
   
-    <ion-tab-button tab="noticias">
+    <ion-tab-button tab="noticias" [style]="styleNoticias">
       <ion-icon name="newspaper-outline"></ion-icon>
       <ion-label>Noticias</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-  
+
 </ion-tabs>

@@ -11,6 +11,7 @@ export class AtractivosPage implements OnInit {
   liked = false;
   likes = 0;
   infoLugares:any;
+  public pageIsLoading;
 
   constructor(
     private router:Router,
@@ -19,6 +20,7 @@ export class AtractivosPage implements OnInit {
 
   ngOnInit() {
     this.getLugares();
+    this.pageIsLoading=true;
   }
 
   
@@ -26,6 +28,7 @@ export class AtractivosPage implements OnInit {
     this.supabase.getLugares().then((data)=>{
       console.log(data);
       this.infoLugares=data.data;
+      this.pageIsLoading = data.error != null ? true : false;
     });
   }
 

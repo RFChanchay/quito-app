@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!pageIsLoading && restaurantes!=null">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Gastronomia</ion-title>
@@ -16,5 +16,49 @@
       <h1 class="text-title"><strong>{{item.nombre}}</strong></h1>
       <ion-card-subtitle>{{item.parroquia.nombre}}</ion-card-subtitle>
     </ion-card-header>
+  </ion-card>
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="pageIsLoading">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card >
+    <ion-card-header>
+      <h1 class="text-title"><strong><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></strong></h1>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header>
+      <h1 class="text-title"><strong><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></strong></h1>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header>
+      <h1 class="text-title"><strong><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></strong></h1>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header>
+      <h1 class="text-title"><strong><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></strong></h1>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
   </ion-card>
 </ion-content>

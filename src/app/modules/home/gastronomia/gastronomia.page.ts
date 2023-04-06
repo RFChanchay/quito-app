@@ -10,6 +10,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class GastronomiaPage implements OnInit {
 
   restaurantes:any;
+  public pageIsLoading;
   constructor(
     private router:Router,
     private supabase:DatabaseService,
@@ -18,11 +19,13 @@ export class GastronomiaPage implements OnInit {
 
   ngOnInit() {
     this.getRestaurantes();
+    this.pageIsLoading=true;
   }
   async getRestaurantes(){
     this.supabase.getRestaurantes().then((data)=>{
       console.log(data);
       this.restaurantes=data.data;
+      this.pageIsLoading = data.error != null ? true : false;
     });
   }
   getRestaurante(item){

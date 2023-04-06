@@ -3,7 +3,7 @@
     <ion-title>Parroquias</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!pageIsLoading && parroquias!=null">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Parroquias</ion-title>
@@ -17,3 +17,34 @@
   </ion-card>
   
 </ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="pageIsLoading">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-title>
+    </ion-toolbar>
+</ion-header>
+  
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  
+</ion-content>
+

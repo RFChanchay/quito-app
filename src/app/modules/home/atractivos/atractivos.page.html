@@ -1,16 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-back-button slot="start" text="Volver"></ion-back-button>
     <ion-title>Atractivos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!pageIsLoading && infoLugares!=null">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Atractivos</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-card *ngFor="let item of infoLugares" >
+  <ion-card *ngFor="let item of infoLugares">
     <img (click)="getAtractivo(item)" alt="Silhouette of mountains" src="{{item.imgPrincipal}}" />
     <ion-card-header (click)="getAtractivo(item)">
       <ion-card-title>{{item.nombre}}</ion-card-title>
@@ -23,6 +24,85 @@
         <ion-icon name="heart" [color]="liked ? 'danger' : 'medium'"></ion-icon>
       </ion-button>
       <ion-badge color="danger" *ngIf="likes > 0">{{ item.likes }}</ion-badge>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+<ion-content [fullscreen]="true" *ngIf="pageIsLoading">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card >
+    <ion-card-header >
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div ><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></div>
+      
+      <ion-button slot="start" fill="clear"  class="ion-text-end">
+        <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+      </ion-button>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header >
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div ><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></div>
+      
+      <ion-button slot="start" fill="clear"  class="ion-text-end">
+        <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+      </ion-button>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header >
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div ><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></div>
+      
+      <ion-button slot="start" fill="clear"  class="ion-text-end">
+        <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+      </ion-button>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header >
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div ><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></div>
+      
+      <ion-button slot="start" fill="clear"  class="ion-text-end">
+        <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+      </ion-button>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header >
+      <ion-card-title><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-title>
+      <ion-card-subtitle><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div ><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></div>
+      
+      <ion-button slot="start" fill="clear"  class="ion-text-end">
+        <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+      </ion-button>
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
     </ion-card-content>
   </ion-card>
 </ion-content>

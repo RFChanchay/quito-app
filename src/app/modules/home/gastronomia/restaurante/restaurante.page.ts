@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Restaurante } from 'src/app/models/restaurante.model';
 import { DatabaseService } from 'src/app/services/database.service';
 import { environment } from 'src/environments/environment';
 declare var mapboxgl:any;
@@ -9,24 +10,35 @@ declare var mapboxgl:any;
   styleUrls: ['./restaurante.page.scss'],
 })
 export class RestaurantePage implements OnInit {
+  public pageIsLoading;
   map:any;
-  infoRestaurante:any;
+  infoRestaurante:Restaurante;
   
   constructor(
     private route:ActivatedRoute,
     private supabase:DatabaseService
-  ) { }
+  ) { 
+
+    this.pageIsLoading=true;
+  }
 
   ngOnInit() {
-    this.loadMap();
     this.loadRestaurant();
-
+    this.pageIsLoading=true;
   }
-  loadRestaurant() {
+
+  ionViewDidEnter(){
+    if(!this.pageIsLoading){
+      this.loadMap();
+    } 
+  }
+
+  async loadRestaurant() {
     const id: any= this.route.snapshot.queryParams;
     this.supabase.getRowById(id.name,'restaurante').then((data)=>{
-      this.infoRestaurante=data.data[0];
+      this.infoRestaurante=data.data as Restaurante;
       console.log(this.infoRestaurante);
+      this.pageIsLoading = data.error != null ? true : false;
     });
   }
   loadMap() {

@@ -1,15 +1,15 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngIf="!pageIsLoading && infoAtractivo!=null">
   <ion-toolbar>
-    <ion-back-button slot="start"></ion-back-button>
-    <ion-title>Atractivo</ion-title>
+    <ion-back-button slot="start" text="Volver"></ion-back-button>
+    <ion-title >{{infoAtractivo.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
   
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!pageIsLoading && infoAtractivo!=null">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Atractivo</ion-title>
+      <ion-title size="large">{{infoAtractivo.nombre}}</ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -34,6 +34,31 @@
       <input type="radio" id="img-4" name="gallery" class="gallery__selector"/>
       <img class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
       <label for="img-4" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+    </div>
+  </section>
+</ion-content>
+
+
+<ion-content [fullscreen]="true" *ngIf="pageIsLoading">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"><ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <div id="map"></div>
+  <section class="gallery">
+    <div class="gallery__item">
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </div>
+    <div class="gallery__item">
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </div>
+    <div class="gallery__item">
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+    </div>
+    <div class="gallery__item">
+      <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
     </div>
   </section>
 </ion-content>

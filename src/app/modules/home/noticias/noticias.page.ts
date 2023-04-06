@@ -21,6 +21,7 @@ export class NoticiasPage implements OnInit,OnDestroy {
   videoUrl: any;
   selectedVideo:any;
   isModalOpen = false;
+  public pageIsLoading;
 
   constructor(
     public navCtrl: NavController, private ytProvider: YotubeService, private alertCtrl: AlertController,
@@ -31,26 +32,18 @@ export class NoticiasPage implements OnInit,OnDestroy {
   ngOnInit() {
     console.log('Ejecutando ngOnInit');
     this.searchVideos();
+    this.pageIsLoading=true;
   }
   
   ngOnDestroy(){
     console.log('Ejecutando destroy');
   }
-  ionViewWillEnter(){
-    console.log("ionViewWillEnter")
-    for(let i = 0; i < 100; i++){
-      console.log(i);
-    }
-  }
-  ionViewDidEnter(){
-      console.log("ionViewDidEnter")
-  }
   
-
   async searchPlaylists() {
     await this.ytProvider.getPlaylistsForChannel(this.channelId).subscribe((items: Youtube)=>{
-      this.playlist = items.items
-      console.log('items: ', items.items)
+      this.playlist = items.items;
+      console.log('items: ', items.items);
+      this.pageIsLoading=false;
     });
     
   }
@@ -58,6 +51,8 @@ export class NoticiasPage implements OnInit,OnDestroy {
     await this.ytProvider.getSpecificVideos('rurales quito').subscribe((items:any)=>{
       console.log(items);
       this.videos=items.items;
+      this.pageIsLoading = this.videos != null ? false : true;
+      console.log(this.pageIsLoading);
     });
   }
   openPlaylist(id) {

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
 import { environment } from 'src/environments/environment.prod';
+import { Atractivo } from "src/app/models/atractivo.model";
 declare var mapboxgl:any;
 @Component({
   selector: 'app-atractivo',
@@ -8,11 +11,32 @@ declare var mapboxgl:any;
 })
 
 export class AtractivoPage implements OnInit {
+  public pageIsLoading;
   map:any;
-  constructor() { }
+  infoAtractivo: Atractivo;
+  constructor(
+    private route:ActivatedRoute,
+    private supabase:DatabaseService
+  ) {
+    this.pageIsLoading=true;
+   }
 
   ngOnInit() {
-    this.loadMap();
+    this.loadAtractivo();
+    this.pageIsLoading=true;
+  }
+  ionViewDidEnter(){
+    if(!this.pageIsLoading){
+      this.loadMap();
+    } 
+  }
+  async loadAtractivo(){
+    const id: any= this.route.snapshot.queryParams;
+    this.supabase.getRowById(id.name,'atractivo').then((data)=>{
+      this.infoAtractivo=data.data as Atractivo;
+      console.log(data);
+      this.pageIsLoading = data.error != null ? true : false;
+    })
   }
   loadMap() {
     mapboxgl.accessToken = environment.mapBoxKey;

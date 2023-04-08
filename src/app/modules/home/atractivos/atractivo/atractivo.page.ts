@@ -38,13 +38,14 @@ export class AtractivoPage implements OnInit {
       this.pageIsLoading = data.error != null ? true : false;
     })
   }
-  loadMap() {
+  async loadMap() {
     mapboxgl.accessToken = environment.mapBoxKey;
-    this.map = new mapboxgl.Map({
+     this.map = await new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [-78.433333, -0.15], // Coordenadas geográficas de Nayón
       zoom: 12, // Zoom del mapa
+      // Zoom del mapa
       scrollZoom: false, // Desactivar zoom con la rueda del mouse
       dragPan: false // Desactivar arrastrar el mapa con el mouse
     });

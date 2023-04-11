@@ -27,7 +27,12 @@ export class DatabaseService {
     .single();
     //return { data, error };//
   }
-
+  async getImgParroquia(idParroquia){
+    return await this.supabaseClient
+      .from('imagenParroquia')
+      .select('*')
+      .eq('id_parroquiaI',idParroquia)
+  }
   async getParroquias() {
     // Ejecuta la consulta utilizando el método 'select' de Supabase y selecciona solo las columnas 'nombre' y 'urlimagen'
     return await this.supabaseClient

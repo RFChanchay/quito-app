@@ -1,0 +1,20 @@
+
+
+<ion-content [fullscreen]="true">
+  
+  <div class="form-box">
+    <form class="form" (submit)="signIn()">
+        <span class="title" >Login</span>
+        <span class="subtitle">Ingresa yá a tu cuenta</span>
+        <div class="form-container">
+          <input  name="email" type="email" class="input" #email="ngModel" [(ngModel)]="user.email" placeholder="Email">
+          <input  name="password" type="password" class="input" #password="ngModel" [(ngModel)]="user.password" placeholder="Password">
+        </div>
+        <button [disabled]="loading" type="submit"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>Ingresa</button>
+    </form>
+    <div class="form-section">
+      <p>¿No tienes cuenta? <a routerLink="../register">Registrate</a> </p>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="signOut()">desloguearse</button>
+</ion-content>

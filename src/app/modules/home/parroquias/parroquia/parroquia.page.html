@@ -162,17 +162,13 @@
 
   <div class="parroquia-galeria">
     <h2>Galería de Fotos</h2>
-    <ion-slides>
-      <ion-slide>
-        <img src="https://www.minayon.com/portal/media/pictures/web/acerca_nayon/valle.jpg">
-      </ion-slide>
-      <ion-slide>
-        <img src="https://inmoamigo.com/wp-content/uploads/2021/03/Nayon.jpg">
-      </ion-slide>
-      <ion-slide>
-        <img src="https://ec.viajandox.com/uploads/attractive_2078.jpg">
+    <ion-slides *ngIf="imgParroquia">
+      <ion-slide *ngFor="let item of imgParroquia"> 
+        <img src="{{item.url}}">
       </ion-slide>
       <!-- Agrega tantos 'ion-slide' como imágenes desees mostrar en la galería -->
     </ion-slides>
+    
+
   </div>
 </ion-content>

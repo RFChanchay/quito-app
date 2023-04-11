@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ImgParroquia } from 'src/app/models/imgParroquia.model';
 import { Parroquia } from 'src/app/models/parroquia.model';
 import { DatabaseService } from 'src/app/services/database.service';
 import { environment } from 'src/environments/environment';
@@ -14,7 +15,7 @@ export class ParroquiaPage implements OnInit {
   public pageIsLoading;
   map: any;
   infoParroquia: Parroquia = null;
-
+  imgParroquia:any[];
   constructor(
     private route: ActivatedRoute,
     private supabase: DatabaseService
@@ -44,7 +45,11 @@ export class ParroquiaPage implements OnInit {
       this.infoParroquia = data.data as Parroquia;
       console.log(data);
       this.pageIsLoading = data.error != null ? true : false;
-      
+      this.supabase.getImgParroquia(id.name).then((dataI)=>{
+        this.imgParroquia = dataI.data;
+        console.log(dataI);
+        this.pageIsLoading = dataI.error != null ? true : false;
+      });
     });
   }
   async loadMap() {

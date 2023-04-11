@@ -11,7 +11,9 @@ export class HomePage {
   styleParroquias='';
   styleAtractivos='';
   styleGastronomia='';
-  styleNoticias='border-top: 2px solid red;';
+  styleNoticias='';
+  styleConfiguracion='';
+  
 
 
   constructor() {
@@ -25,6 +27,8 @@ export class HomePage {
       atractivos: '',
       gastronomia: '',
       noticias: '',
+      configuracion: '',
+
     };
     estilos[activeTab] = 'border-top: 5px solid var(--ion-color-primary);';
     for (const tab in estilos) {
@@ -37,6 +41,7 @@ export class HomePage {
     this.styleAtractivos = estilos.atractivos;
     this.styleGastronomia = estilos.gastronomia;
     this.styleNoticias = estilos.noticias;
+    this.styleConfiguracion=estilos.configuracion;
   }
 
 }

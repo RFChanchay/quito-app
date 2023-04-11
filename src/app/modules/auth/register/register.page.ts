@@ -37,8 +37,9 @@ export class RegisterPage implements OnInit {
       this.supabaseService.createUser(this.user.email, this.user.password)
         .then((data: any) => {
           console.log(data);
-          this.showAlert("Usuario creado exitosamente");
+          this.showAlert("Usuario creado exitosamente, Revisa tu correo electrónico");
           this.loading = false;
+          this.router.navigateByUrl('/auth/login');
         }).catch((e) => {
           console.log(e);
           this.loading = false;

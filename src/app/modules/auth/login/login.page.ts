@@ -34,12 +34,17 @@ export class LoginPage implements OnInit {
       this.supabaseService.signIn(this.user.email, this.user.password)
         .then((data: any) => {
           console.log(data);
-          if (!data.error==null) {
-            this.showAlert("No se pudo ingresar, intentelo mas tarde");
+          if (data.error) {
+            if (data.error.message === 'Email not confirmed') {
+              this.showAlert('Verifique su correo electrónico');
+            } else {
+              this.showAlert('No se pudo ingresar, inténtelo más tarde');
+            }
             this.loading = false;
-          }else{
-            this.showAlert("Ta logeado");
+          } else {
+            this.showAlert('¡Ha iniciado sesión exitosamente!');
             this.loading = false;
+            this.router.navigateByUrl('/home/parroquias');
           }
           
         }).catch((e) => {

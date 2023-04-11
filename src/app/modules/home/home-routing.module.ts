@@ -27,10 +27,13 @@ const routes: Routes = [
       {
         path: 'noticias',
         loadChildren: () => import('./noticias/noticias.module').then( m => m.NoticiasPageModule)
-      }
+      },
+      {
+        path: 'configuracion',
+        loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+      },
     ]
   },
-  
 ];
 
 @NgModule({

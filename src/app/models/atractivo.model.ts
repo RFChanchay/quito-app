@@ -8,4 +8,6 @@ export interface Atractivo {
     parroquia: Parroquia;
     imgPrincipal: string;
     likes: number;
+    longitud:number;
+    latitud:number;
 }

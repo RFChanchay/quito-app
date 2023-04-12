@@ -24,6 +24,30 @@
         <ion-icon name="play"></ion-icon>
       </ion-button>
     </ion-item>
+
+    <ion-item >
+      
+      
+      <ion-button fill="clear" slot="end" >
+        <ion-icon name="play"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-title size="large">Videos Cordova</ion-title>
+    <ion-item *ngFor="let video of videos">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" [src]="video.snippet.thumbnails.high.url" />
+      </ion-thumbnail>
+      <ion-label>
+        <h1>{{ video.snippet.title }}</h1>
+        <ion-label style="text-align: left;">{{ video.snippet.channelTitle }}</ion-label>
+      </ion-label>
+      <ion-button fill="clear" slot="end" (click)="playVideo2(video)">
+        <ion-icon name="play"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-list>
   
   

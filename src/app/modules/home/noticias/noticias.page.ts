@@ -6,6 +6,7 @@ import { Item } from 'src/app/models/item.model';
 import { Youtube } from 'src/app/models/youtube.model';
 //import { Subject, takeUntil } from 'rxjs';
 import { YotubeService } from 'src/app/services/yotube.service';
+import { VideoPlayer } from "@awesome-cordova-plugins/video-player";
 
 
 
@@ -25,7 +26,7 @@ export class NoticiasPage implements OnInit,OnDestroy {
 
   constructor(
     public navCtrl: NavController, private ytProvider: YotubeService, private alertCtrl: AlertController,
-    private sanitizer: DomSanitizer,
+    private sanitizer: DomSanitizer
     //public :ModalController
   ) { }
 
@@ -55,9 +56,6 @@ export class NoticiasPage implements OnInit,OnDestroy {
       console.log(this.pageIsLoading);
     });
   }
-  openPlaylist(id) {
-    //this.navCtrl.push('PlaylistPage', {id: id});
-  }
   playVideo(video:any ) {
     console.log(video);
     console.log(typeof(video.id.videoId));
@@ -71,6 +69,16 @@ export class NoticiasPage implements OnInit,OnDestroy {
     this.isModalOpen=true;
     console.log(this.selectedVideo);
   }
+  playVideo2(video:any){
+    console.log('xd');
+    const videoId = video.id.videoId;
+    VideoPlayer.play(`https://www.youtube.com/embed/${videoId}`).then(() => {
+      console.log('video completed');
+     }).catch(err => {
+      console.log(err);
+     });
+  }
+  //playVideo
 
 
   async showAlert(msg) {

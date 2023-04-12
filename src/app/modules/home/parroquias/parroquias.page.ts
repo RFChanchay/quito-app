@@ -12,7 +12,6 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class ParroquiasPage implements OnInit {
 
   public pageIsLoading;
-  data:any[];
   parroquias:Parroquia[];
   
   //p

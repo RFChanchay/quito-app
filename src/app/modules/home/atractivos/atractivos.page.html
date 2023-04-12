@@ -20,10 +20,7 @@
     <ion-card-content>
       <div (click)="getAtractivo(item)">{{item.about}}</div>
       
-      <ion-button slot="start" fill="clear" (click)="like(item)" class="ion-text-end">
-        <ion-icon name="heart" [color]="liked ? 'danger' : 'medium'"></ion-icon>
-      </ion-button>
-      <ion-badge color="danger" *ngIf="likes > 0">{{ item.likes }}</ion-badge>
+      
     </ion-card-content>
   </ion-card>
 </ion-content>

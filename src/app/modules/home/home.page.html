@@ -1,4 +1,4 @@
-<ion-tabs #tabs (ionTabsDidChange)="onTabsDidChange()">
+<ion-tabs #tabs (ionTabsDidChange)="onTabsDidChange()" id="main-content">
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="parroquias" [style]="styleParroquias">
@@ -21,10 +21,32 @@
       <ion-label>Noticias</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="configuracion" [style]="styleConfiguracion">
-      <ion-icon name="construct-outline"></ion-icon>
-      <ion-label>Ajustes</ion-label>
-    </ion-tab-button>
+    <ion-menu-toggle>
+      <ion-icon name="construct-outline" style="display: block; margin: auto;"></ion-icon>
+      <ion-label style=" margin: auto;">Ajustes</ion-label>
+      
+    </ion-menu-toggle>
+      
+    
   </ion-tab-bar>
 
 </ion-tabs>
+
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Ajustes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="profile-container">
+      
+      <div class="profile-card">
+        <img src="https://i.imgur.com/S4GNFIW.jpg" alt="image2" class="profile-icon" />
+        <div class="profile-name">{{userMail ? userMail : 'Usuario desconocido'}}</div>
+        <a  class="button" (click)="signOut()">Cerrar Sesión</a>
+      </div>
+      
+    </div>
+  </ion-content>
+</ion-menu>

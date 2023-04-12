@@ -6,4 +6,6 @@ export interface Restaurante {
     about:string;
     parroquia:Parroquia;
     imgPrincipal: string;
+    longitud:number;
+    latitud:number;
 }

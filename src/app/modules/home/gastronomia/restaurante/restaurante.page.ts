@@ -13,6 +13,7 @@ export class RestaurantePage implements OnInit {
   public pageIsLoading;
   map:any;
   infoRestaurante:Restaurante;
+  platos:any;
   
   constructor(
     private route:ActivatedRoute,
@@ -38,7 +39,11 @@ export class RestaurantePage implements OnInit {
     this.supabase.getRowById(id.name,'restaurante').then((data)=>{
       this.infoRestaurante=data.data as Restaurante;
       console.log(this.infoRestaurante);
-      this.pageIsLoading = data.error != null ? true : false;
+      this.supabase.getPlatosById(id.name).then((data)=>{
+        this.platos=data.data;
+        console.log(this.platos);
+        this.pageIsLoading = data.error != null ? true : false;
+      });
     });
   }
   async loadMap() {
@@ -46,12 +51,13 @@ export class RestaurantePage implements OnInit {
      this.map = await new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12',
-      center: [-78.433333, -0.15], // Coordenadas geográficas de Nayón
-      zoom: 12, // Zoom del mapa
+      center: [this.infoRestaurante.latitud, this.infoRestaurante.longitud], // Coordenadas geográficas de Nayón
+      zoom: 16, // Zoom del mapa
       // Zoom del mapa
       scrollZoom: false, // Desactivar zoom con la rueda del mouse
       dragPan: false // Desactivar arrastrar el mapa con el mouse
     });
   }
+
 
 }

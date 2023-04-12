@@ -60,7 +60,7 @@ export class AtractivoPage implements OnInit {
      this.map = await new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12',
-      center: [-78.433333, -0.15], // Coordenadas geográficas de Nayón
+      center: [this.infoAtractivo.longitud, this.infoAtractivo.latitud], // Coordenadas geográficas de Nayón
       zoom: 12, // Zoom del mapa
       // Zoom del mapa
       scrollZoom: false, // Desactivar zoom con la rueda del mouse
